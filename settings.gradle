@@ -1,0 +1,2 @@
+rootProject.name = "ProjetoIntegrador_Vic"
+include ':app'

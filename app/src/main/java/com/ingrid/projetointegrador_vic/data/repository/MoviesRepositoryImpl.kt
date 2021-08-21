@@ -1,8 +1,8 @@
 package com.ingrid.projetointegrador_vic.data.repository
 
 import com.ingrid.projetointegrador_vic.data.api.MovieService
-import com.ingrid.projetointegrador_vic.domain.model.ApiResult
-import com.ingrid.projetointegrador_vic.domain.model.ApiResultGenre
+import com.ingrid.projetointegrador_vic.domain.model.StatusResponse
+import com.ingrid.projetointegrador_vic.domain.model.StatusResponseGenre
 import com.ingrid.projetointegrador_vic.domain.model.GenreResponse
 import com.ingrid.projetointegrador_vic.domain.model.MovieResult
 import com.ingrid.projetointegrador_vic.domain.repository.MoviesRepository
@@ -26,7 +26,7 @@ class MoviesRepositoryImpl: MoviesRepository {
         return retrofit.create(MovieService::class.java)
     }
 
-    override fun getMovies(resultCallback: (result: ApiResult) -> Unit) {
+    override fun getMovies(resultCallback: (result: StatusResponse) -> Unit) {
         service.returnMovies().enqueue(object : Callback<MovieResult?> {
 
             override fun onResponse(
@@ -34,18 +34,18 @@ class MoviesRepositoryImpl: MoviesRepository {
                 response: Response<MovieResult?>,
             ) {
                 if (response.isSuccessful()) {
-                    resultCallback(ApiResult.Success(response.body()?.results))
+                    resultCallback(StatusResponse.Success(response.body()?.results))
                 }
             }
 
             override fun onFailure(call: Call<MovieResult?>, t: Throwable) {
 
-                resultCallback(ApiResult.ServerError(t.message))
+                resultCallback(StatusResponse.ServerError(t.message))
             }
 
         })
     }
-    override fun getGenre(resultCallback: (result: ApiResultGenre) -> Unit) {
+    override fun getGenre(resultCallback: (result: StatusResponseGenre) -> Unit) {
         service.returnGenres().enqueue(object : Callback<GenreResponse?> {
 
             override fun onResponse(
@@ -53,13 +53,13 @@ class MoviesRepositoryImpl: MoviesRepository {
                 response: Response<GenreResponse?>
             ) {
                 if (response.isSuccessful()) {
-                    resultCallback(ApiResultGenre.Success(response.body()?.genres))
+                    resultCallback(StatusResponseGenre.Success(response.body()?.genres))
 
                 }
             }
 
             override fun onFailure(call: Call<GenreResponse?>, t: Throwable) {
-                resultCallback(ApiResultGenre.ServerError(t.message))
+                resultCallback(StatusResponseGenre.ServerError(t.message))
             }
 
         })

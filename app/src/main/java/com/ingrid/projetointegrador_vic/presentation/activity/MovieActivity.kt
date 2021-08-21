@@ -9,7 +9,7 @@ import com.ingrid.projetointegrador_vic.R
 import com.ingrid.projetointegrador_vic.R.layout
 import com.ingrid.projetointegrador_vic.presentation.adapter.FragmentAdapter
 
-class MainActivity : AppCompatActivity() {
+class MovieActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)

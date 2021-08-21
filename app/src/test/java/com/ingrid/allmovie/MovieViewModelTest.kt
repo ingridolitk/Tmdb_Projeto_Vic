@@ -2,8 +2,8 @@ package com.ingrid.allmovie
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.ingrid.projetointegrador_vic.domain.model.ApiResult
-import com.ingrid.projetointegrador_vic.domain.model.ApiResultGenre
+import com.ingrid.projetointegrador_vic.domain.model.StatusResponse
+import com.ingrid.projetointegrador_vic.domain.model.StatusResponseGenre
 import com.ingrid.projetointegrador_vic.domain.model.Genre
 import com.ingrid.projetointegrador_vic.domain.model.Movie
 import com.ingrid.projetointegrador_vic.domain.repository.MoviesRepository
@@ -55,7 +55,7 @@ class UsersViewModelTest {
             name = ""
         ))
 
-        val resultSuccess = MockRepository(ApiResult.Success(list), ApiResultGenre.Success(listGenre))
+        val resultSuccess = MockRepository(StatusResponse.Success(list), StatusResponseGenre.Success(listGenre))
         viewModel = MovieViewModel(resultSuccess)
         viewModel.movieList.observeForever(movieListObserver)
         viewModel.genreList.observeForever(genreListObserver)
@@ -70,13 +70,13 @@ class UsersViewModelTest {
     }
 }
 
-class MockRepository(private val result: ApiResult, private val resultGenre: ApiResultGenre) :
+class MockRepository(private val result: StatusResponse, private val resultGenre: StatusResponseGenre) :
     MoviesRepository {
-    override fun getMovies(usersResultCallback: (result: ApiResult) -> Unit) {
+    override fun getMovies(usersResultCallback: (result: StatusResponse) -> Unit) {
         usersResultCallback(result)
     }
 
-    override fun getGenre(usersResultCallback: (result: ApiResultGenre) -> Unit) {
+    override fun getGenre(usersResultCallback: (result: StatusResponseGenre) -> Unit) {
         usersResultCallback(resultGenre)
     }
 

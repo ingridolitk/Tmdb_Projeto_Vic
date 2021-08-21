@@ -3,8 +3,8 @@ package com.ingrid.projetointegrador_vic.presentation.allmovie
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.ingrid.projetointegrador_vic.domain.model.ApiResult
-import com.ingrid.projetointegrador_vic.domain.model.ApiResultGenre
+import com.ingrid.projetointegrador_vic.domain.model.StatusResponse
+import com.ingrid.projetointegrador_vic.domain.model.StatusResponseGenre
 import com.ingrid.projetointegrador_vic.domain.model.Genre
 import com.ingrid.projetointegrador_vic.domain.model.Movie
 import com.ingrid.projetointegrador_vic.domain.repository.MoviesRepository
@@ -21,11 +21,11 @@ class MovieViewModel (private val moviesRepository: MoviesRepository) : ViewMode
 
         moviesRepository.getMovies { result ->
             when (result) {
-                is ApiResult.Success -> {
+                is StatusResponse.Success -> {
                     movieList.value = result.movies
 
                 }
-                is ApiResult.ServerError -> {
+                is StatusResponse.ServerError -> {
                     errorLiveData.value = result.message
                 }
             }
@@ -38,10 +38,10 @@ class MovieViewModel (private val moviesRepository: MoviesRepository) : ViewMode
 
         moviesRepository.getGenre { result ->
             when (result) {
-                is ApiResultGenre.Success -> {
+                is StatusResponseGenre.Success -> {
                     genreList.value = result.genre
                 }
-                is ApiResultGenre.ServerError -> {
+                is StatusResponseGenre.ServerError -> {
                     errorLiveData.value = result.message
 
                 }

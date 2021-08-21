@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     xmlns:Tools="http://schemas.android.com/tools"
     android:paddingStart="@dimen/medium"
+    android:gravity="center"
     android:orientation="vertical"
-    Tools:ignore="RtlSymmetry"
     android:background="@color/backgroundColor">
 
     <androidx.cardview.widget.CardView
@@ -26,7 +26,8 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/imgMovie"
@@ -35,7 +36,8 @@
                 android:adjustViewBounds="true"
                 android:clickable="true"
                 android:focusable="true"
-              app:srcCompat="@drawable/imgmovie" />
+                android:gravity="center"
+                app:srcCompat="@drawable/imgmovie" />
 
         </FrameLayout>
     </androidx.cardview.widget.CardView>

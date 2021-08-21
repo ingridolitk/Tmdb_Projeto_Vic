@@ -15,12 +15,12 @@
         android:syncable="true"
         android:theme="@style/Theme.ProjetoIntegrador_Vic.NoActionBar">
         <activity
-            android:name="com.ingrid.projetointegrador_vic.presentation.moviedescription.SecondMovieDescription"
+            android:name="com.ingrid.projetointegrador_vic.presentation.activity.SecondMovieDescriptionActivity"
             android:label="@string/title_activity_second_movie_description"
             android:theme="@style/Theme.ProjetoIntegrador_Vic.NoActionBar">
 
         </activity>
-        <activity android:name="com.ingrid.projetointegrador_vic.presentation.activity.MainActivity">
+        <activity android:name="com.ingrid.projetointegrador_vic.presentation.activity.MovieActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

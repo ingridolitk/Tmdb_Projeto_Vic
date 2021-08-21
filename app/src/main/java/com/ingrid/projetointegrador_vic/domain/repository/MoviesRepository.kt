@@ -1,9 +1,9 @@
 package com.ingrid.projetointegrador_vic.domain.repository
 
-import com.ingrid.projetointegrador_vic.domain.model.ApiResult
-import com.ingrid.projetointegrador_vic.domain.model.ApiResultGenre
+import com.ingrid.projetointegrador_vic.domain.model.StatusResponse
+import com.ingrid.projetointegrador_vic.domain.model.StatusResponseGenre
 
 interface MoviesRepository {
-    fun getMovies(usersResultCallback: (result: ApiResult) -> Unit)
-    fun getGenre(usersResultCallback: (result: ApiResultGenre) -> Unit)
+    fun getMovies(usersResultCallback: (result: StatusResponse) -> Unit)
+    fun getGenre(usersResultCallback: (result: StatusResponseGenre) -> Unit)
 }

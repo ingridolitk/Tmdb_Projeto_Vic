@@ -41,7 +41,7 @@ class MovieAdapter(private val list: List<Movie>,
         }
         if (holder is MovieViewHolder)
             holder.title.text = currentItem.title
-            holder.ratingMovie.text = currentItem.popularity.toString()
+            holder.ratingMovie.text = (currentItem.vote_average).toString()
     }
 
 

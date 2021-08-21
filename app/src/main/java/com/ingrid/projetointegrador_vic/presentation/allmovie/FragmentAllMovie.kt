@@ -16,7 +16,7 @@ import com.ingrid.projetointegrador_vic.data.repository.MoviesRepositoryImpl
 import com.ingrid.projetointegrador_vic.domain.model.Movie
 import com.ingrid.projetointegrador_vic.presentation.adapter.GenAdapter
 import com.ingrid.projetointegrador_vic.presentation.adapter.MovieAdapter
-import com.ingrid.projetointegrador_vic.presentation.moviedescription.SecondMovieDescription
+import com.ingrid.projetointegrador_vic.presentation.activity.SecondMovieDescriptionActivity
 import com.ingrid.projetointegrador_vic.utils.setVisible
 
 class FragmentAllMovie : Fragment() {
@@ -90,7 +90,7 @@ class FragmentAllMovie : Fragment() {
     }
 
     private fun handleClick(movie: Movie) {
-        val intent = startActivity(Intent(context, SecondMovieDescription::class.java))
+        val intent = startActivity(Intent(context, SecondMovieDescriptionActivity::class.java))
 
     }
 }

@@ -62,4 +62,4 @@
             <item name="android:textAppearance">@style/textDefault</item>
 
         </style>
-    </resources>
+</resources>

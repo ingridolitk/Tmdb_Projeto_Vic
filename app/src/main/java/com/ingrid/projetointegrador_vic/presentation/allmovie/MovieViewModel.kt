@@ -16,7 +16,7 @@ class MovieViewModel (private val moviesRepository: MoviesRepository) : ViewMode
     val movieList: MutableLiveData<List<Movie>> = MutableLiveData()
     val genreList: MutableLiveData<List<Genre>> = MutableLiveData()
 
-    fun getMovies() {
+    fun getMovies(){
         loadingEvent.value = true
 
         moviesRepository.getMovies { result ->
@@ -44,9 +44,9 @@ class MovieViewModel (private val moviesRepository: MoviesRepository) : ViewMode
                 is ApiResultGenre.ServerError -> {
                     errorLiveData.value = result.message
 
-                    loadingEvent.value = false
                 }
             }
+            loadingEvent.value = false
         }
     }
 

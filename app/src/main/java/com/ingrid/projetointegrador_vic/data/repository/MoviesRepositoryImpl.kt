@@ -1,7 +1,10 @@
 package com.ingrid.projetointegrador_vic.data.repository
 
 import com.ingrid.projetointegrador_vic.data.api.MovieService
-import com.ingrid.projetointegrador_vic.domain.model.*
+import com.ingrid.projetointegrador_vic.domain.model.ApiResult
+import com.ingrid.projetointegrador_vic.domain.model.ApiResultGenre
+import com.ingrid.projetointegrador_vic.domain.model.GenreResponse
+import com.ingrid.projetointegrador_vic.domain.model.MovieResult
 import com.ingrid.projetointegrador_vic.domain.repository.MoviesRepository
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,7 +17,6 @@ const val URL_MOVIE = "https://api.themoviedb.org/3/"
 class MoviesRepositoryImpl: MoviesRepository {
 
      var service = createRetrofit()
-
     private fun createRetrofit(): MovieService {
         val retrofit = Retrofit.Builder()
             .baseUrl(URL_MOVIE)
@@ -38,7 +40,7 @@ class MoviesRepositoryImpl: MoviesRepository {
 
             override fun onFailure(call: Call<MovieResult?>, t: Throwable) {
 
-                resultCallback(ApiResult.ServerError("Erro no sistema. Alguém me desconfigurou!"))
+                resultCallback(ApiResult.ServerError(t.message))
             }
 
         })
@@ -57,9 +59,10 @@ class MoviesRepositoryImpl: MoviesRepository {
             }
 
             override fun onFailure(call: Call<GenreResponse?>, t: Throwable) {
-                resultCallback(ApiResultGenre.ServerError("Erro no sistema. Alguém me desconfigurou!"))
+                resultCallback(ApiResultGenre.ServerError(t.message))
             }
 
         })
     }
+
 }

@@ -12,4 +12,5 @@ interface MovieService {
 
     @GET("genre/movie/list?api_key=f7eaeb09d0bc520ae20d604476749d60")
     fun returnGenres(): Call<GenreResponse>
+
 }

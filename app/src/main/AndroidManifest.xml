@@ -6,7 +6,6 @@
 
     <application
         android:allowBackup="true"
-        android:authorities="br.com.mauker.materialsearchview.searchhistorydatabase"
         android:exported="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,7 +17,9 @@
         <activity
             android:name="com.ingrid.projetointegrador_vic.presentation.moviedescription.SecondMovieDescription"
             android:label="@string/title_activity_second_movie_description"
-            android:theme="@style/Theme.ProjetoIntegrador_Vic.NoActionBar"></activity>
+            android:theme="@style/Theme.ProjetoIntegrador_Vic.NoActionBar">
+
+        </activity>
         <activity android:name="com.ingrid.projetointegrador_vic.presentation.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

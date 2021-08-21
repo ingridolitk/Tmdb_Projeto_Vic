@@ -30,7 +30,6 @@ class GenAdapter(
         val currentItem = list[position]
 
         if (holder is GenViewHolder)
-        // holder.itemGen.text = currentItem.name
             holder.itemGen.text = list[position].name
         holder.itemGen.setOnCheckedChangeListener { _, isChecked ->
 

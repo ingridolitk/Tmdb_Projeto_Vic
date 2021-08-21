@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backgroundColor"
     tools:context=".presentation.favorite.FragmentFavorite">
 
@@ -10,6 +11,7 @@
         android:id="@+id/listFavorite"
         android:layout_width="408dp"
         android:layout_height="647dp"
+        app:layoutManager="LinearLayoutManager"
         android:orientation="horizontal" />
 
 </FrameLayout>

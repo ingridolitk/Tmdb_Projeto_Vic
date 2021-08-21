@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.ingrid.projetointegrador_vic.R
 import com.ingrid.projetointegrador_vic.domain.model.Movie
 import kotlinx.android.synthetic.main.item_rv.view.*
+import kotlin.math.roundToInt
 
 class MovieAdapter(private val list: List<Movie>,
                    private val clickListener:(Movie)->Unit):RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
@@ -41,18 +42,15 @@ class MovieAdapter(private val list: List<Movie>,
         }
         if (holder is MovieViewHolder)
             holder.title.text = currentItem.title
-            holder.ratingMovie.text = (currentItem.vote_average).toString()
+            holder.ratingMovie.text = (currentItem.vote_average?.times(10))?.let { it.roundToInt() }.toString() + "%"
     }
-
 
     override fun getItemCount(): Int {
         return list.size
     }
-
     class MovieViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgMovie: ImageView = itemView.imgMovie
         val title: TextView = itemView.titleMovie
         val ratingMovie: TextView = itemView.ratingMovie
-
     }
 }

@@ -28,11 +28,12 @@ class MovieActivity : AppCompatActivity() {
             }
         })
     }
+
     private fun getTabTitle(position: Int): String {
         return when (position) {
             0 -> "Todos os filmes"
             1 -> "Favoritos"
-            else -> ""
+            else -> "Todos os filmes"
         }
     }
 }

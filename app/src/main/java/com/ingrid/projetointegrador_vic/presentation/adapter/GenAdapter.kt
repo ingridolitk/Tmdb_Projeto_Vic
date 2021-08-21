@@ -17,12 +17,12 @@ class GenAdapter(
     private val selectedItems: MutableList<Int> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenAdapter.GenViewHolder {
-        val card = LayoutInflater
+        val chip = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.rv_item_genres,
                 parent,
                 false)
-        return GenViewHolder(card)
+        return GenViewHolder(chip)
     }
 
     override fun onBindViewHolder(holder: GenViewHolder, position: Int) {
@@ -32,7 +32,6 @@ class GenAdapter(
         if (holder is GenViewHolder)
             holder.itemGen.text = list[position].name
         holder.itemGen.setOnCheckedChangeListener { _, isChecked ->
-
             if (isChecked) {
                 selectedItems.add(list[position].id)
             } else {
@@ -41,7 +40,6 @@ class GenAdapter(
 
         }
     }
-
 
     override fun getItemCount(): Int {
         return list.size

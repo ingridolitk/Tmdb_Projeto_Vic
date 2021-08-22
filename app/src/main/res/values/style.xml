@@ -62,4 +62,11 @@
             <item name="android:textAppearance">@style/textDefault</item>
 
         </style>
+    <style name="movieTitle">
+        <item name="android:text">@string/movie_title</item>
+        <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:textColor">@color/movieTitleColor</item>
+        <item name="android:textSize">@dimen/medium_sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

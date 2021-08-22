@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:Tools="http://schemas.android.com/tools"
     android:paddingStart="@dimen/medium"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:background="@color/backgroundColor">
+    tools:ignore="RtlSymmetry">
 
     <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cvImage"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small"
+        android:layout_marginTop="@dimen/medium"
         android:layout_marginEnd="@dimen/medium"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:cardCornerRadius="@dimen/xlarge"
-        app:cardElevation="@dimen/xsmall"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        card_view:cardBackgroundColor="@android:color/transparent"
+        card_view:cardCornerRadius="@dimen/xlarge"
+        card_view:cardElevation="@dimen/xsmall">
+
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imgMovie"
@@ -42,25 +41,19 @@
         </FrameLayout>
     </androidx.cardview.widget.CardView>
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/titleMovie"
+        style="@style/movieTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/titleMovie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="TitleTxt"
-            android:textAlignment="center"
-            android:textAppearance="@style/textTitle"
-            android:textColor="@color/title_background" />
+        android:maxEms="8"
+        tools:text="@string/movie_title"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="@dimen/medium"
+        android:layout_marginTop="@dimen/medium"
+        app:layout_constraintEnd_toEndOf="@+id/cvImage"
+        app:layout_constraintStart_toStartOf="@+id/cvImage"
+        app:layout_constraintTop_toBottomOf="@+id/cvImage" />
 
         <ToggleButton
         android:id="@+id/btnHeart"
@@ -72,15 +65,9 @@
         android:text=""
         android:textOff=""
         style="@style/toggleButton"
-        android:textOn="" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="292dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:textOn=""
+        app:layout_constraintStart_toEndOf="@+id/titleMovie"
+        app:layout_constraintTop_toTopOf="@+id/titleMovie"  />
 
         <ImageView
             android:id="@+id/imgStar"
@@ -90,17 +77,19 @@
             android:contentDescription="@string/star_rating_description"
             android:src="@drawable/ic_baseline_star_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/cvImage"
+            app:layout_constraintTop_toBottomOf="@+id/titleMovie"/>
 
-        <TextView
-            android:id="@+id/ratingMovie"
-            android:layout_width="102dp"
-            android:layout_height="15dp"
-            android:textAppearance="@style/textDefault"
-            android:fontFamily="@font/lato_regular"
-            android:text="movie_rating"
-            android:textColor="@color/movieTitleColor"
-            app:layout_constraintStart_toEndOf="@+id/imgStar" />
+    <TextView
+        android:id="@+id/ratingMovie"
+        android:layout_width="102dp"
+        android:layout_height="15dp"
+        android:fontFamily="@font/lato_regular"
+        android:text="movie_rating"
+        android:textAppearance="@style/textDefault"
+        android:textColor="@color/movieTitleColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgStar" />
 
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

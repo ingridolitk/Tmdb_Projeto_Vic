@@ -29,10 +29,10 @@ class MovieAdapter(private val list: List<Movie>,
 
         val currentItem = list[position]
 
-        if(list[position].poster_path !== ""){
+        if(currentItem.poster_path !== ""){
             holder.imgMovie?.let {
                 Glide.with(holder.imgMovie.context).load(
-                    "https://image.tmdb.org/t/p/w500" + list[position].poster_path
+                    "https://image.tmdb.org/t/p/w500" +currentItem.poster_path
                 ).into(it)
             }
             holder.imgMovie.setOnClickListener{

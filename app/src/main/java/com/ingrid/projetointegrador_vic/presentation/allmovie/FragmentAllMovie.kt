@@ -16,7 +16,6 @@ import com.ingrid.projetointegrador_vic.data.repository.MoviesRepositoryImpl
 import com.ingrid.projetointegrador_vic.domain.model.Movie
 import com.ingrid.projetointegrador_vic.presentation.adapter.GenAdapter
 import com.ingrid.projetointegrador_vic.presentation.adapter.MovieAdapter
-import com.ingrid.projetointegrador_vic.presentation.activity.SecondMovieDescriptionActivity
 import com.ingrid.projetointegrador_vic.utils.setVisible
 
 class FragmentAllMovie : Fragment() {
@@ -83,6 +82,10 @@ class FragmentAllMovie : Fragment() {
                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             })
 
+            viewModel.errorLiveDataGenre.observe(viewLifecycleOwner, Observer { message ->
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            })
+
             viewModel.loadingEvent.observe(viewLifecycleOwner, Observer { isVisible ->
                 loading.setVisible(false)
             })
@@ -90,7 +93,6 @@ class FragmentAllMovie : Fragment() {
     }
 
     private fun handleClick(movie: Movie) {
-        val intent = startActivity(Intent(context, SecondMovieDescriptionActivity::class.java))
-
+        //val intent = startActivity(Intent(context, SecondMovieDescriptionActivity::class.java))
     }
 }

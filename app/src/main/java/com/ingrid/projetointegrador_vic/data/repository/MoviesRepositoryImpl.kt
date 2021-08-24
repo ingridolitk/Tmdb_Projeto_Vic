@@ -4,7 +4,7 @@ import com.ingrid.projetointegrador_vic.data.api.MovieService
 import com.ingrid.projetointegrador_vic.domain.model.StatusResponse
 import com.ingrid.projetointegrador_vic.domain.model.StatusResponseGenre
 import com.ingrid.projetointegrador_vic.domain.model.GenreResponse
-import com.ingrid.projetointegrador_vic.domain.model.MovieResult
+import com.ingrid.projetointegrador_vic.domain.model.MovieResponse
 import com.ingrid.projetointegrador_vic.domain.repository.MoviesRepository
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,29 +16,29 @@ const val URL_MOVIE = "https://api.themoviedb.org/3/"
 
 class MoviesRepositoryImpl: MoviesRepository {
 
-     var service = createRetrofit()
+    var service = createRetrofit()
     private fun createRetrofit(): MovieService {
         val retrofit = Retrofit.Builder()
-            .baseUrl(URL_MOVIE)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+                .baseUrl(URL_MOVIE)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
 
         return retrofit.create(MovieService::class.java)
     }
 
     override fun getMovies(resultCallback: (result: StatusResponse) -> Unit) {
-        service.returnMovies().enqueue(object : Callback<MovieResult?> {
+        service.returnMovies().enqueue(object : Callback<MovieResponse?> {
 
             override fun onResponse(
-                call: Call<MovieResult?>,
-                response: Response<MovieResult?>,
+                    call: Call<MovieResponse?>,
+                    response: Response<MovieResponse?>,
             ) {
                 if (response.isSuccessful()) {
                     resultCallback(StatusResponse.Success(response.body()?.results))
                 }
             }
 
-            override fun onFailure(call: Call<MovieResult?>, t: Throwable) {
+            override fun onFailure(call: Call<MovieResponse?>, t: Throwable) {
 
                 resultCallback(StatusResponse.ServerError(t.message))
             }
@@ -49,8 +49,8 @@ class MoviesRepositoryImpl: MoviesRepository {
         service.returnGenres().enqueue(object : Callback<GenreResponse?> {
 
             override fun onResponse(
-                call: Call<GenreResponse?>,
-                response: Response<GenreResponse?>
+                    call: Call<GenreResponse?>,
+                    response: Response<GenreResponse?>
             ) {
                 if (response.isSuccessful()) {
                     resultCallback(StatusResponseGenre.Success(response.body()?.genres))

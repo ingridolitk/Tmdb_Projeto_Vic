@@ -27,32 +27,38 @@ class UsersViewModelTest {
     @Mock
     private lateinit var genreListObserver: Observer<List<Genre>>
 
+    @Mock
+    private lateinit var observerMovieError: Observer<String>
+
+    @Mock
+    private lateinit var observerGenreError: Observer<String>
+
     private lateinit var viewModel: MovieViewModel
 
     @Test
     fun `when viewModel getMovie result in success then sets movieListLiveData`() {
         //Arrange
         val list = listOf<Movie>(
-            Movie(
-                adult = false,
-                backdrop_path = "",
-                genre_ids = listOf(1, 2),
-                id = 3,
-                original_language = "",
-                original_title = "",
-                overview = "",
-                popularity = 1.0,
-                poster_path = "",
-                release_date = "",
-                title = "",
-                video = false,
-                vote_average = 3.0,
-                vote_count = 1
-            )
+                Movie(
+                        adult = false,
+                        backdrop_path = "",
+                        genre_ids = listOf(1, 2),
+                        id = 3,
+                        original_language = "",
+                        original_title = "",
+                        overview = "",
+                        popularity = 1.0,
+                        poster_path = "",
+                        release_date = "",
+                        title = "",
+                        video = false,
+                        vote_average = 3.0,
+                        vote_count = 1
+                )
         )
         val listGenre = listOf<Genre>(Genre(
-            id = 1,
-            name = ""
+                id = 1,
+                name = ""
         ))
 
         val resultSuccess = MockRepository(StatusResponse.Success(list), StatusResponseGenre.Success(listGenre))
@@ -65,13 +71,32 @@ class UsersViewModelTest {
         viewModel.getGenre()
 
         // Assert
-        verify(movieListObserver).onChanged(list)
+        verify(movieListObserver).onChanged(list )
         verify(genreListObserver).onChanged(listGenre)
+    }
+    @Test
+    fun `when viewModel getMovie result in server error then sets movieListLiveData`() {
+        //Arrange
+        val resultServerError = MockRepository(StatusResponse.ServerError("Erro Movie"),
+                StatusResponseGenre.ServerError("Erro Gênero"))
+
+        viewModel = MovieViewModel(resultServerError)
+        viewModel.errorLiveData.observeForever(observerMovieError)
+        viewModel.errorLiveDataGenre.observeForever(observerGenreError)
+
+        //Act
+        viewModel.getMovies()
+        viewModel.getGenre()
+
+        // Assert
+        verify(observerMovieError).onChanged("Erro Movie")
+        verify(observerGenreError).onChanged("Erro Gênero")
+
     }
 }
 
 class MockRepository(private val result: StatusResponse, private val resultGenre: StatusResponseGenre) :
-    MoviesRepository {
+        MoviesRepository {
     override fun getMovies(usersResultCallback: (result: StatusResponse) -> Unit) {
         usersResultCallback(result)
     }
@@ -81,3 +106,4 @@ class MockRepository(private val result: StatusResponse, private val resultGenre
     }
 
 }
+

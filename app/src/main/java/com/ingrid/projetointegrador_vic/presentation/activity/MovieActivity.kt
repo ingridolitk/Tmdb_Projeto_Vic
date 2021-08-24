@@ -12,7 +12,7 @@ import com.ingrid.projetointegrador_vic.presentation.adapter.FragmentAdapter
 class MovieActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layout.activity_main)
+        setContentView(layout.activity_movie)
 
         val viewpager = findViewById<ViewPager2>(R.id.viewPager)
         val tablayout = findViewById<TabLayout>(R.id.tab_layoutopc)
@@ -23,10 +23,6 @@ class MovieActivity : AppCompatActivity() {
         TabLayoutMediator(tablayout, viewpager) { tab, position ->
             tab.text = getTabTitle(position)
         }.attach()
-        viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-            }
-        })
     }
 
     private fun getTabTitle(position: Int): String {

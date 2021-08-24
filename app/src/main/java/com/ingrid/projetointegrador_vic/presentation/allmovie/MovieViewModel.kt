@@ -13,6 +13,7 @@ class MovieViewModel (private val moviesRepository: MoviesRepository) : ViewMode
 
     val loadingEvent: MutableLiveData<Boolean> = MutableLiveData()
     val errorLiveData: MutableLiveData<String> = MutableLiveData()
+    val errorLiveDataGenre: MutableLiveData<String> = MutableLiveData()
     val movieList: MutableLiveData<List<Movie>> = MutableLiveData()
     val genreList: MutableLiveData<List<Genre>> = MutableLiveData()
 
@@ -42,7 +43,7 @@ class MovieViewModel (private val moviesRepository: MoviesRepository) : ViewMode
                     genreList.value = result.genre
                 }
                 is StatusResponseGenre.ServerError -> {
-                    errorLiveData.value = result.message
+                    errorLiveDataGenre.value = result.message
 
                 }
             }

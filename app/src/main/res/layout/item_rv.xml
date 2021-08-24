@@ -46,47 +46,44 @@
         style="@style/movieTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxEms="8"
-        tools:text="@string/movie_title"
-        android:textAlignment="center"
         android:layout_marginHorizontal="@dimen/medium"
         android:layout_marginTop="@dimen/medium"
+        android:maxEms="8"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/cvImage"
         app:layout_constraintStart_toStartOf="@+id/cvImage"
-        app:layout_constraintTop_toBottomOf="@+id/cvImage" />
+        app:layout_constraintTop_toBottomOf="@+id/cvImage"
+        tools:text="@string/movie_title" />
 
-        <ToggleButton
+    <ToggleButton
         android:id="@+id/btnHeart"
+        style="@style/toggleButton"
         android:layout_width="30dp"
         android:layout_height="25dp"
         android:background="@drawable/heart_button"
         android:checked="false"
         android:contentDescription="@string/heart_icon_description"
-        android:text=""
-        android:textOff=""
-        style="@style/toggleButton"
-        android:textOn=""
         app:layout_constraintStart_toEndOf="@+id/titleMovie"
-        app:layout_constraintTop_toTopOf="@+id/titleMovie"  />
+        app:layout_constraintTop_toTopOf="@+id/titleMovie" />
 
-        <ImageView
-            android:id="@+id/imgStar"
-            android:layout_width="33dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="4dp"
-            android:contentDescription="@string/star_rating_description"
-            android:src="@drawable/ic_baseline_star_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/cvImage"
-            app:layout_constraintTop_toBottomOf="@+id/titleMovie"/>
+    <ImageView
+        android:id="@+id/imgStar"
+        android:layout_width="34dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="@dimen/xxsmall"
+        android:contentDescription="@string/star_rating_description"
+        android:src="@drawable/ic_baseline_star_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cvImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleMovie" />
 
     <TextView
         android:id="@+id/ratingMovie"
         android:layout_width="102dp"
         android:layout_height="15dp"
         android:fontFamily="@font/lato_regular"
-        android:text="movie_rating"
+        android:text="@string/movie_rating"
         android:textAppearance="@style/textDefault"
         android:textColor="@color/movieTitleColor"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -9,7 +9,7 @@ android {
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "com.ingrid.projetointegrador_vic"
+        applicationId "com.ingrid.api_marvel"
         minSdkVersion 27
         targetSdkVersion 30
         versionCode 1
@@ -57,4 +57,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 }

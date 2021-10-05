@@ -16,10 +16,11 @@
         android:syncable="true"
         android:theme="@style/Theme.ProjetoIntegrador_Vic.NoActionBar">
         <activity
-            android:name="com.ingrid.projetointegrador_vic.presentation.moviedescription.SecondMovieDescription"
+            android:name=".presentation.moviedescription.SecondMovieDescription"
+            android:exported="true"
             android:label="@string/title_activity_second_movie_description"
-            android:theme="@style/Theme.ProjetoIntegrador_Vic.NoActionBar"></activity>
-        <activity android:name="com.ingrid.projetointegrador_vic.presentation.activity.MainActivity">
+            android:theme="@style/Theme.ProjetoIntegrador_Vic.NoActionBar" />
+        <activity android:name=".presentation.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

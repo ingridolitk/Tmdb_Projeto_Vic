@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ingrid.projetointegrador_vic.R
 import com.ingrid.projetointegrador_vic.domain.model.MovieResult
+import kotlinx.android.synthetic.main.activity_second_movie_description.view.*
 import kotlinx.android.synthetic.main.item_rv.view.*
+import kotlinx.android.synthetic.main.item_rv.view.ratingMovie
+import kotlinx.android.synthetic.main.item_rv.view.titleMovie
 
 class MovieAdapter(private val list: List<MovieResult>,
                    private val clickListener:(MovieResult)->Unit):RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
@@ -41,7 +44,7 @@ class MovieAdapter(private val list: List<MovieResult>,
         }
         if (holder is MovieViewHolder)
             holder.title.text = currentItem.title
-            holder.ratingMovie.text = currentItem.rated.toString()
+            holder.ratingMovie.text = currentItem.rated
     }
 
 

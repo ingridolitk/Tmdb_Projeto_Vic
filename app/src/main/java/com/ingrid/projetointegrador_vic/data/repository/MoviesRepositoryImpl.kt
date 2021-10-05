@@ -9,7 +9,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val URL_MOVIE = "https://api.themoviedb.org/3/"
+const val URL_MOVIE = "https://private-b34167-rvmarvel.apiary-mock.com/"
 
 class MoviesRepositoryImpl: MoviesRepository {
 
@@ -25,18 +25,19 @@ class MoviesRepositoryImpl: MoviesRepository {
     }
 
     override fun getMovies(resultCallback: (result: ApiResult) -> Unit) {
-        service.returnMovies().enqueue(object : Callback<MovieResult?> {
+        service.returnMovies().enqueue(object : Callback<List<MovieResult>?> {
 
             override fun onResponse(
-                call: Call<MovieResult?>,
-                response: Response<MovieResult?>,
+                call: Call<List<MovieResult>?>,
+
+                response: Response<List<MovieResult>?>,
             ) {
                 if (response.isSuccessful()) {
-                    resultCallback(ApiResult.Success(response.body()?.results))
+                    resultCallback(ApiResult.Success(response.body()))
                 }
             }
 
-            override fun onFailure(call: Call<MovieResult?>, t: Throwable) {
+            override fun onFailure(call: Call<List<MovieResult>?>, t: Throwable) {
 
                 resultCallback(ApiResult.ServerError("Erro no sistema. Alguém me desconfigurou!"))
             }

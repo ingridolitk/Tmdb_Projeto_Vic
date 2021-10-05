@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ingrid.projetointegrador_vic.R
 import com.ingrid.projetointegrador_vic.data.repository.MoviesRepositoryImpl
-import com.ingrid.projetointegrador_vic.domain.model.Movie
+import com.ingrid.projetointegrador_vic.domain.model.MovieResult
 import com.ingrid.projetointegrador_vic.presentation.adapter.GenAdapter
 import com.ingrid.projetointegrador_vic.presentation.adapter.MovieAdapter
 import com.ingrid.projetointegrador_vic.presentation.moviedescription.SecondMovieDescription
@@ -89,7 +89,7 @@ class FragmentAllMovie : Fragment() {
         })
     }
 
-    private fun handleClick(movie: Movie) {
+    private fun handleClick(movie: MovieResult) {
         val intent = startActivity(Intent(context, SecondMovieDescription::class.java))
 
     }

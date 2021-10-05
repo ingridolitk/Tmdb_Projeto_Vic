@@ -1,22 +1,15 @@
 package com.ingrid.projetointegrador_vic.domain.model
 
 data class MovieResult (
-        val page: String,
-        val results: List<Movie>
-)
-data class Movie (
-        val adult: Boolean,
-        val backdrop_path: String,
-        val genre_ids: List<Int>,
-        val id: Int,
-        val original_language: String,
-        val original_title: String,
-        val overview: String,
-        val popularity: Double,
-        val poster_path: String,
-        val release_date: String,
         val title: String,
-        val video: Boolean,
-        val vote_average: Double,
-        val vote_count: Int
+        val year: String,
+        val rated: String,
+        val released: String,
+        val runtime: String,
+        val genre: String,
+        val director: String,
+        val writer: String,
+        val actors: String,
+        val plot: String,
+        val poster: String,
 )

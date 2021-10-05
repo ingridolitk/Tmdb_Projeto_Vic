@@ -8,6 +8,8 @@ import com.google.android.material.chip.Chip
 import com.ingrid.projetointegrador_vic.R
 import com.ingrid.projetointegrador_vic.domain.model.Genre
 import kotlinx.android.synthetic.main.rv_item_genres.view.*
+import okhttp3.internal.Util
+import androidx.lifecycle.MutableLiveData
 
 class GenAdapter(
     private val list: List<Genre>,

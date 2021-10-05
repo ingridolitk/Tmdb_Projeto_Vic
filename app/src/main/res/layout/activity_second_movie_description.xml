@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:Tools="http://schemas.android.com/tools"
+    android:paddingStart="@dimen/medium"
+    android:paddingEnd="@dimen/medium"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor"
+    Tools:ignore="RtlSymmetry"
+   >
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvImageDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small"
+        android:layout_marginEnd="@dimen/medium"
+        app:cardCornerRadius="@dimen/xlarge"
+        app:cardElevation="@dimen/xsmall"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgMovieDesc"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleMovie"
+            app:srcCompat="@drawable/imgmovie" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/titleMovie"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        android:maxLines="3"
+        android:paddingStart="@dimen/medium"
+        android:text="TitleTxt"
+        android:textAlignment="center"
+        android:textAppearance="@style/textTitle"
+        android:textColor="@color/title_background"
+        Tools:layout_editor_absoluteX="24dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPlot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="5"
+        android:text="Plot"
+        android:textAppearance="@style/textTitle2"
+        android:textColor="@color/title_background"
+        Tools:layout_editor_absoluteX="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/cvImageDesc"
+        app:layout_constraintTop_toBottomOf="@+id/titleMovie" />
+
+    <TextView
+        android:id="@+id/txtActor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="5"
+        android:text="Actor"
+        android:textAppearance="@style/textDefault"
+        android:textColor="@color/title_background"
+        app:layout_constraintBottom_toTopOf="@+id/txtGenre"
+        app:layout_constraintTop_toBottomOf="@+id/cvImageDesc" />
+
+    <TextView
+        android:id="@+id/txtGenre"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:fontFamily="@font/lato_regular"
+        android:text="movie_rating"
+        android:textAppearance="@style/textDefault"
+        android:textColor="@color/movieTitleColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgStar"
+        app:layout_constraintTop_toBottomOf="@+id/cvImageDesc" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

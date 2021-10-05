@@ -8,11 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ingrid.projetointegrador_vic.R
-import com.ingrid.projetointegrador_vic.domain.model.Movie
+import com.ingrid.projetointegrador_vic.domain.model.MovieResult
+import kotlinx.android.synthetic.main.activity_second_movie_description.view.*
 import kotlinx.android.synthetic.main.item_rv.view.*
+import kotlinx.android.synthetic.main.item_rv.view.ratingMovie
+import kotlinx.android.synthetic.main.item_rv.view.titleMovie
 
-class MovieAdapter(private val list: List<Movie>,
-                   private val clickListener:(Movie)->Unit):RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
+class MovieAdapter(private val list: List<MovieResult>,
+                   private val clickListener:(MovieResult)->Unit):RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -28,10 +31,10 @@ class MovieAdapter(private val list: List<Movie>,
 
         val currentItem = list[position]
 
-        if(list[position].poster_path !== ""){
+        if(list[position].poster !== ""){
             holder.imgMovie?.let {
                 Glide.with(holder.imgMovie.context).load(
-                    "https://image.tmdb.org/t/p/w500" + list[position].poster_path
+                    list[position].poster
                 ).into(it)
             }
             holder.imgMovie.setOnClickListener{
@@ -41,7 +44,7 @@ class MovieAdapter(private val list: List<Movie>,
         }
         if (holder is MovieViewHolder)
             holder.title.text = currentItem.title
-            holder.ratingMovie.text = currentItem.popularity.toString()
+            holder.ratingMovie.text = currentItem.rated
     }
 
 

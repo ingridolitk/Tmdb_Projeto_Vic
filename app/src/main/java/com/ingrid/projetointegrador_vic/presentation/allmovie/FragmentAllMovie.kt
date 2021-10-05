@@ -13,8 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ingrid.projetointegrador_vic.R
 import com.ingrid.projetointegrador_vic.data.repository.MoviesRepositoryImpl
-import com.ingrid.projetointegrador_vic.domain.model.Movie
-import com.ingrid.projetointegrador_vic.presentation.adapter.GenAdapter
+import com.ingrid.projetointegrador_vic.domain.model.MovieResult
 import com.ingrid.projetointegrador_vic.presentation.adapter.MovieAdapter
 import com.ingrid.projetointegrador_vic.presentation.moviedescription.SecondMovieDescription
 import com.ingrid.projetointegrador_vic.utils.setVisible
@@ -22,7 +21,6 @@ import com.ingrid.projetointegrador_vic.utils.setVisible
 class FragmentAllMovie : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var rvGenres: RecyclerView
     private lateinit var loading: ProgressBar
 
     private val viewModel: MovieViewModel =
@@ -43,14 +41,12 @@ class FragmentAllMovie : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.rvMovie)
-        rvGenres = view.findViewById(R.id.rvGenres)
         loading = view.findViewById(R.id.loading)
 
         setupRecyclerView()
 
         setObservers()
         viewModel.getMovies()
-        viewModel.getGenre()
     }
 
     private fun setupRecyclerView() {
@@ -71,13 +67,6 @@ class FragmentAllMovie : Fragment() {
                 })
 
             }
-            viewModel.genreList.observe(viewLifecycleOwner, Observer { genreListResponse ->
-                rvGenres.adapter = genreListResponse?.let { list ->
-                    GenAdapter(list, clickListener = {
-
-                    })
-                }
-            })
 
             viewModel.errorLiveData.observe(viewLifecycleOwner, Observer { message ->
                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
@@ -89,8 +78,15 @@ class FragmentAllMovie : Fragment() {
         })
     }
 
-    private fun handleClick(movie: Movie) {
-        val intent = startActivity(Intent(context, SecondMovieDescription::class.java))
+    private fun handleClick(movie: MovieResult) {
+        val intent = Intent(context, SecondMovieDescription::class.java)
+        intent.putExtra("title", movie.title)
+        intent.putExtra("poster", movie.poster)
+        intent.putExtra("actor", movie.actors)
+        intent.putExtra("plot", movie.plot)
+        intent.putExtra("genre", movie.genre)
+        intent.putExtra("imgMovie", movie.poster)
+        startActivity(intent)
 
     }
 }
